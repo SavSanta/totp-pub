@@ -48,8 +48,8 @@ proc wapp-default {} {
   ::t destroy
 }
 
-# This is the javascript that takes refreshes page every 30 seconds
 
+# This is the javascript that takes refreshes page every 30 seconds
 proc wapp-page-script.js {} {
   wapp-mimetype text/javascript
   wapp-cache-control max-age=0
@@ -66,14 +66,8 @@ proc wapp-page-script.js {} {
 
         document.getElementById('updateIn').textContent = countDown;
         };
-
-        // Alternative refresh Mechanism
-        //function timedRefresh(time) {
-        //setTimeout("location.reload(true);", time);
-        //}
   }
 }
 
 lappend $::argv
-puts "$::argv"
 wapp-start $::argv
