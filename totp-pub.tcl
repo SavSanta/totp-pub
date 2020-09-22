@@ -1,4 +1,5 @@
 #!/usr/bin/wapptclsh
+# Actually can run by using just tclsh interpreter due to source calls of wapp below
 
 set SECRET ""
 
