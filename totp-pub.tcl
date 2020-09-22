@@ -27,6 +27,7 @@ proc wapp-default {} {
     }
 
     set val [pubtoken [clock seconds]]
+    lassign $val pass mid nex
     puts $val
 
   wapp-trim {
