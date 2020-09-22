@@ -37,12 +37,6 @@ proc wapp-default {} {
     <script src='%url([wapp-param SCRIPT_NAME]/script.js)'></script>
     <script> setInterval(timerTick, 1000); </script>
   }
-    <br/>
-    <hr/>
-    <p style="color:blue" id='updateIn'>--</p>
-    <script src='%url([wapp-param SCRIPT_NAME]/script.js)'></script>
-    <script> setInterval(timerTick, 1000); </script>
-  }
 
   ::t destroy
 }
