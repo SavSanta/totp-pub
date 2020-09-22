@@ -1,8 +1,12 @@
 #!/usr/bin/wapptclsh
 #
-# Invoke using "tclsh" and then surf the website that pops up
-# to verify the logic in wapp.
-#
+# CAn actually invoke using "tclsh".
+
+
+source /usr/local/lib/tcltk/wapp/wapp.tcl
+source /usr/local/lib/tcltk/mtotp.tcl
+package require base32
+
 if {[catch {package require wapp}]} {
   source [file dir [file dir [info script]]]/wapp.tcl
 }
@@ -15,8 +19,7 @@ proc wapp-default {} {
     <ul>
   }
 
-  source /usr/local/lib/tcltk/mtotp.tcl
-  package require base32
+
   totp::totp create t [base32::decode <BASE32DATASECRET>]
 
   proc pubtoken {when} {
