@@ -1,6 +1,6 @@
 #!/usr/bin/wapptclsh
 #
-# CAn actually invoke using "tclsh".
+# Can actually invoke using "tclsh".
 
 
 source /usr/local/lib/tcltk/wapp/wapp.tcl
@@ -16,7 +16,6 @@ proc wapp-default {} {
 
   wapp-trim {
     <h1>SHATEST</h1>
-    <ul>
   }
 
 
