@@ -55,7 +55,7 @@ proc wapp-page-script.js {} {
   wapp-cache-control max-age=0
   wapp-trim {
 
-      setInterval(timerTick, 1300);
+      setInterval(timerTick, 1500);
 
       var timerTick = function() {
       var epoch = Math.round(new Date().getTime() / 1000.0);
