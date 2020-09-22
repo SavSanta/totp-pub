@@ -12,13 +12,14 @@ if {[catch {package require wapp}]} {
 }
 
 proc wapp-default {} {
+  global SECRET
   wapp-content-security-policy {script-src 'self' 'unsafe-inline'}
 
   wapp-trim {
     <h1>SHATEST</h1>
   }
 
-
+  global SECRET
   totp::totp create t [base32::decode $SECRET]
 
   proc pubtoken {when} {
