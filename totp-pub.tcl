@@ -1,7 +1,6 @@
 #!/usr/bin/wapptclsh
-#
-# Can actually invoke using "tclsh".
 
+set SECRET ""
 
 source /usr/local/lib/tcltk/wapp/wapp.tcl
 source /usr/local/lib/tcltk/mtotp.tcl
@@ -19,7 +18,7 @@ proc wapp-default {} {
   }
 
 
-  totp::totp create t [base32::decode <BASE32DATASECRET>]
+  totp::totp create t [base32::decode $SECRET]
 
   proc pubtoken {when} {
         list [t totp [expr {$when-30}]] [t totp $when] [t totp [expr {$when+30}]]
