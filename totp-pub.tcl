@@ -29,13 +29,13 @@ proc wapp-default {} {
     set val [pubtoken [clock seconds]]
     puts $val
     lassign $val pass mid nex
-
+    
   wapp-trim {
     <h3>Current Middle:</h3>
-    <pre style='border: 1px solid black;'>%html($val)</pre>
-    <br/>
-    <br/>
-    <hr/>
+    <p style='color: gray; font-size: 12pt; float: left; margin: 10px ;'>%html($pass)</p>
+    <p style='color: green; font-size: 18pt; float: left; margin: 10px; font-weight: bolder; outline-style: dotted; padding: 5px ;'>%html($mid)</p>
+    <p style='color: gray; font-size: 12pt; float: left; margin: 10px ;'>%html($nex)</p>
+    <hr style='clear: both; '></hr>
     <p style="color:blue" id='updateIn'>--</p>
     <script src='%url([wapp-param SCRIPT_NAME]/script.js)'></script>
     <script> setInterval(timerTick, 1000); </script>
