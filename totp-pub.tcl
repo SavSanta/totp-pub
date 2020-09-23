@@ -27,8 +27,8 @@ proc wapp-default {} {
     }
 
     set val [pubtoken [clock seconds]]
-    lassign $val pass mid nex
     puts $val
+    lassign $val pass mid nex
 
   wapp-trim {
     <h3>Current Middle:</h3>
