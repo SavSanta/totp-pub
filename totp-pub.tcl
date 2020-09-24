@@ -16,6 +16,7 @@ proc wapp-default {} {
 
   wapp-trim {
     <style>
+        html { background: black; }
         #pass { color: gray; font-size: 12pt; float: left; margin: 10px ; }
         #mid  { color: green; font-size: 18pt; float: left; margin: 10px; font-weight: bolder; outline-style: dotted; padding: 5px ; }
         #nex  { color: gray; font-size: 12pt; float: left; margin: 10px ; }
@@ -23,7 +24,7 @@ proc wapp-default {} {
   }
 
   wapp-trim {
-    <h1>Angehend Auftraege Auf 7007</h1>
+    <h1>Angehend Auftraege</h1>
   }
 
   global SECRET
