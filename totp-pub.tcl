@@ -1,7 +1,7 @@
 #!/usr/bin/wapptclsh
 # Actually can run by using just tclsh interpreter due to source calls of wapp below
 
-set SECRET ""
+set SECRET "ENTER DATA HERE"
 
 source /usr/local/lib/tcltk/wapp/wapp.tcl
 source /usr/local/lib/tcltk/mtotp.tcl
@@ -12,11 +12,18 @@ if {[catch {package require wapp}]} {
 }
 
 proc wapp-default {} {
-  global SECRET
   wapp-content-security-policy {script-src 'self' 'unsafe-inline'}
 
   wapp-trim {
-    <h1>SHATEST</h1>
+    <style>
+        #pass { color: gray; font-size: 12pt; float: left; margin: 10px ; }
+        #mid  { color: green; font-size: 18pt; float: left; margin: 10px; font-weight: bolder; outline-style: dotted; padding: 5px ; }
+        #nex  { color: gray; font-size: 12pt; float: left; margin: 10px ; }
+    </style>
+  }
+
+  wapp-trim {
+    <h1>Angehend Auftraege Auf 7007</h1>
   }
 
   global SECRET
@@ -30,16 +37,19 @@ proc wapp-default {} {
     puts $val
     lassign $val pass mid nex
     
-  wapp-trim {
-    <h3>Current Middle:</h3>
-    <p style='color: gray; font-size: 12pt; float: left; margin: 10px ;'>%html($pass)</p>
-    <p style='color: green; font-size: 18pt; float: left; margin: 10px; font-weight: bolder; outline-style: dotted; padding: 5px ;'>%html($mid)</p>
-    <p style='color: gray; font-size: 12pt; float: left; margin: 10px ;'>%html($nex)</p>
+wapp-trim {
+    <h3>Ziele:</h3>
+    
+      <p id='pass'>%html($pass)</p>
+      <p id='mid'>%html($mid)</p>
+      <p id='nex'>%html($nex)</p>
     <hr style='clear: both; '></hr>
+    
     <p style="color:blue" id='updateIn'>--</p>
     <script src='%url([wapp-param SCRIPT_NAME]/script.js)'></script>
     <script> setInterval(timerTick, 1000); </script>
   }
+
 
   ::t destroy
 }
