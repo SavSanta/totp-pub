@@ -55,6 +55,21 @@ wapp-trim {
   ::t destroy
 }
 
+# This should write to a logfile all requests. Extend it later to checksize and logrotate.
+# Extemd to log time to message to write out
+proc wapp-before-reply-hook {} {
+  set msg "------------ New request ---------\n"
+  foreach var [lsort [wapp-param-list]] {
+    append msg "$var [list [wapp-param $var]]\n"
+  }
+
+  set bname [wapp-param SCRIPT_FILENAME]
+  set logfile "/var/log/"
+  append logfile [file root [file tail $bname]]-log.txt
+  set out [open $logfile a]
+  puts $out $msg
+  close $out
+}
 
 # This is the javascript that takes refreshes page every 30 seconds
 proc wapp-page-script.js {} {
