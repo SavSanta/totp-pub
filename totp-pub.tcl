@@ -55,13 +55,14 @@ wapp-trim {
   ::t destroy
 }
 
-# This should write to a logfile all requests. Extend it later to checksize and logrotate.
-# Extemd to log time to message to write out
+# This should write to a logfile all requests. Extend it later to checksize and rotate.
 proc wapp-before-reply-hook {} {
-  set msg "------------ New request ---------\n"
-  foreach var [lsort [wapp-param-list]] {
-    append msg "$var [list [wapp-param $var]]\n"
-  }
+  set now [clock format [clock seconds] -format "%a %d-%b-%Y %T"]
+  set msg "------------ New Request @ $now ---------\n"
+  append msg "Recieved Request at [wapp-param .header] \n
+   \t\t with content:  [wapp-param CONTENT] \n
+   \t\t from remote:   [wapp-param REMOTE_ADDR] \n
+   \t\t [wapp-param .reply-code] code and reply sent [wapp-param .reply]\n\n"
 
   set bname [wapp-param SCRIPT_FILENAME]
   set logfile "/var/log/"
@@ -70,6 +71,7 @@ proc wapp-before-reply-hook {} {
   puts $out $msg
   close $out
 }
+
 
 # This is the javascript that takes refreshes page every 30 seconds
 proc wapp-page-script.js {} {
